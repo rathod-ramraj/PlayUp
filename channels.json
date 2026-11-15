@@ -10,12 +10,21 @@
       "active": true
     },
     {
+      "id": "sonyhin",
+      "name": "Sony Liv Hindi",
+      "subtitle": "Sony Liv Hindi",
+      "category": "Live Channel",
+      "type": "iframe",
+      "streamUrl": "https://playupp.pages.dev/cricket/sonyLivHin",
+      "active": true
+    },
+    {
       "id": "sonytel",
       "name": "Sony Liv Telugu",
       "subtitle": "Sony Liv Telugu",
       "category": "Live Channel",
       "type": "iframe",
-      "streamUrl": "https://playupp.pages.dev/cricket/sonyLivtel",
+      "streamUrl": "https://playupp.pages.dev/cricket/sports.html?id=STENTU",
       "active": true
     },
     {
@@ -28,15 +37,6 @@
       "active": true
     },
     {
-      "id": "sonyhin",
-      "name": "Sony Liv Hindi",
-      "subtitle": "Sony Liv Hindi",
-      "category": "Live Channel",
-      "type": "iframe",
-      "streamUrl": "https://playupp.pages.dev/cricket/sonyLivHin",
-      "active": true
-    },
-      {
       "id": "sonylivehd",
       "name": "Sony Liv Iphone",
       "subtitle": "Sony Liv Iphone",
@@ -69,7 +69,7 @@
       "subtitle": "Star Sports HD",
       "category": "Live Channel",
       "type": "iframe",
-      "streamUrl": "https://playupp.pages.dev/cricket/test.html?id=TU1HD",
+      "streamUrl": "https://playupp.pages.dev/cricket/sports.html?id=TU1HD",
       "active": true
     },
     {

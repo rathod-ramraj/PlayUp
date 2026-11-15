@@ -10,13 +10,6 @@
 (function () {
   'use strict';
 
-  // Do not render inside nested iframe embeds
-  try {
-    if (window.self !== window.top) return;
-  } catch (_) {
-    return;
-  }
-
   var SHARE_URL = 'https://playupp.pages.dev/';
   var SHARE_TITLE = 'PlayUp — Live Sports & TV Channels';
   var SHARE_TEXT = 'Watch live cricket, football, sports and TV channels in HD on PlayUp!';
@@ -40,15 +33,15 @@
     '  flex-direction: column !important;',
     '  align-items: center !important;',
     '  justify-content: center !important;',
-    '  gap: 10px !important;',
-    '  padding: 14px 9px 14px 11px !important;',
+    '  gap: 8px !important;',
+    '  padding: 12px 8px 12px 10px !important;',
     '  background: rgba(11, 14, 22, 0.88) !important;',
     '  backdrop-filter: blur(18px) !important;',
     '  -webkit-backdrop-filter: blur(18px) !important;',
     '  border: 1px solid rgba(59, 130, 246, 0.22) !important;',
     '  border-right: none !important;',
-    '  border-radius: 12px 0 0 12px !important;',
-    '  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.6), -1px 0 12px rgba(59, 130, 246, 0.25) !important;',
+    '  border-radius: 11px 0 0 11px !important;',
+    '  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.45) !important;',
     '  cursor: pointer !important;',
     '  user-select: none !important;',
     '  -webkit-user-select: none !important;',
@@ -62,23 +55,30 @@
     '  content: "";',
     '  position: absolute;',
     '  left: 0;',
-    '  top: 14%;',
-    '  bottom: 14%;',
-    '  width: 3px;',
+    '  top: 50%;',
+    '  transform: translateY(-50%) scaleY(1);',
+    '  transform-origin: center left;',
+    '  height: 36px;',
+    '  width: 2.5px;',
     '  border-radius: 0 2px 2px 0;',
-    '  background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);',
-    '  box-shadow: 0 0 10px rgba(59, 130, 246, 0.85);',
+    '  background: linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%);',
+    '  box-shadow: none;',
+    '  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), background 200ms ease !important;',
     '}',
     '@media (hover: hover) and (pointer: fine) {',
     '  .playup-share-tab:hover {',
     '    transform: translateY(-50%) translateX(-4px) !important;',
     '    background: rgba(15, 20, 32, 0.96) !important;',
-    '    border-color: rgba(59, 130, 246, 0.55) !important;',
-    '    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.7), -2px 0 18px rgba(59, 130, 246, 0.45) !important;',
+    '    border-color: rgba(59, 130, 246, 0.4) !important;',
+    '    box-shadow: -5px 0 18px rgba(0, 0, 0, 0.55) !important;',
+    '  }',
+    '  .playup-share-tab:hover::before {',
+    '    transform: translateY(-50%) scaleY(1.36) !important;',
+    '    background: linear-gradient(180deg, #93c5fd 0%, #3b82f6 100%) !important;',
     '  }',
     '  .playup-share-tab:hover .playup-share-tab-icon {',
     '    color: #60a5fa !important;',
-    '    transform: scale(1.12);',
+    '    transform: scale(1.1);',
     '  }',
     '  .playup-share-tab:hover .playup-share-tab-text {',
     '    color: #ffffff !important;',
@@ -92,8 +92,8 @@
     '  display: flex;',
     '  align-items: center;',
     '  justify-content: center;',
-    '  width: 20px;',
-    '  height: 20px;',
+    '  width: 17px;',
+    '  height: 17px;',
     '  color: #3b82f6;',
     '  transition: color 180ms ease, transform 180ms cubic-bezier(0.16, 1, 0.3, 1);',
     '}',
@@ -101,9 +101,9 @@
     '  writing-mode: vertical-rl;',
     '  text-orientation: mixed;',
     '  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;',
-    '  font-size: 10.5px;',
+    '  font-size: 9.5px;',
     '  font-weight: 700;',
-    '  letter-spacing: 2px;',
+    '  letter-spacing: 1.6px;',
     '  text-transform: uppercase;',
     '  color: #f0f4ff;',
     '  white-space: nowrap;',
@@ -372,20 +372,25 @@
     '/* Responsive Mobile Styling */',
     '@media (max-width: 640px) {',
     '  .playup-share-tab {',
-    '    padding: 11px 6px 11px 8px !important;',
-    '    gap: 6px !important;',
+    '    padding: 8px 5px 8px 7px !important;',
+    '    gap: 5px !important;',
+    '    border-radius: 8px 0 0 8px !important;',
+    '  }',
+    '  .playup-share-tab::before {',
+    '    height: 24px !important;',
+    '    width: 2px !important;',
     '  }',
     '  .playup-share-tab-icon {',
-    '    width: 17px !important;',
-    '    height: 17px !important;',
+    '    width: 14px !important;',
+    '    height: 14px !important;',
     '  }',
     '  .playup-share-tab-icon svg {',
-    '    width: 13px !important;',
-    '    height: 13px !important;',
+    '    width: 12px !important;',
+    '    height: 12px !important;',
     '  }',
     '  .playup-share-tab-text {',
-    '    font-size: 9px !important;',
-    '    letter-spacing: 1.5px !important;',
+    '    font-size: 8.5px !important;',
+    '    letter-spacing: 1.4px !important;',
     '  }',
     '  .playup-share-modal {',
     '    max-width: 330px !important;',
@@ -624,14 +629,20 @@
   });
 
   function init() {
+    if (!document.body) {
+      document.addEventListener('DOMContentLoaded', init);
+      return;
+    }
     injectStyles();
     createTab();
     createModal();
   }
 
-  if (document.readyState !== 'loading') {
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
     init();
   } else {
     document.addEventListener('DOMContentLoaded', init);
   }
+  // Extra fallback to ensure it runs even if events fired earlier
+  setTimeout(init, 300);
 })();
