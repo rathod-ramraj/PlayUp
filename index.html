@@ -3812,12 +3812,7 @@
       btn.dataset.id = ch.id;
       btn.innerHTML = CH_LINK_ICON + '<span class="ch-btn-label">' + label + '</span>';
       btn.setAttribute('aria-pressed', 'false');
-      btn.addEventListener('click', function () {
-        if (btn.parentNode && btn.parentNode.firstChild !== btn) {
-          btn.parentNode.prepend(btn);
-        }
-        switchChannel(ch.id);
-      }, { passive: true });
+      btn.addEventListener('click', function () { switchChannel(ch.id); }, { passive: true });
       btn.addEventListener('mouseenter', function () {
         if (document.documentElement.classList.contains('perf-streaming')) return;
         var src = ch.iframeSrc || '';
@@ -3953,27 +3948,8 @@
     }
 
     // ════════════════════════════════════════════════════
-    //  CHANNEL SWITCH & TOP SCROLL
+    //  CHANNEL SWITCH
     // ════════════════════════════════════════════════════
-    function scrollToPlayerTop() {
-      var pEl = document.getElementById('player');
-      var nav = document.getElementById('site-nav');
-      var navOffset = nav ? (nav.offsetHeight + 18) : 68;
-      var targetY = pEl ? Math.max(0, pEl.getBoundingClientRect().top + window.pageYOffset - navOffset) : 0;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
-
-      // Re-scroll safeguard to ensure smooth scrolling isn't aborted by iframe mount
-      setTimeout(function () {
-        var current = document.getElementById('player');
-        if (current) {
-          var r = current.getBoundingClientRect();
-          if (r.top < 0 || r.top > (navOffset + 60)) {
-            window.scrollTo({ top: Math.max(0, r.top + window.pageYOffset - navOffset), behavior: 'smooth' });
-          }
-        }
-      }, 150);
-    }
-
     function switchChannel(id, skipScroll) {
       var errEl = document.getElementById('errorBox');
       if (errEl) errEl.style.display = 'none';
@@ -3986,9 +3962,6 @@
         var on = pills[j].dataset.id === id;
         pills[j].classList.toggle('active', on);
         pills[j].setAttribute('aria-pressed', on ? 'true' : 'false');
-        if (on && pills[j].parentNode && pills[j].parentNode.classList.contains('ch-grid') && pills[j].parentNode.firstChild !== pills[j]) {
-          pills[j].parentNode.prepend(pills[j]);
-        }
       }
 
       var sStrip = document.getElementById('serverStrip');
@@ -4010,7 +3983,8 @@
       }
       if (!skipScroll) {
         updatePageTitle(ch);
-        scrollToPlayerTop();
+        var pEl = document.getElementById('player');
+        if (pEl) pEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
         setHomePageTitle();
       }
@@ -4500,6 +4474,8 @@
               if (!chExists) channels.push(chObj);
 
               switchChannel(cid);
+              var pEl = document.getElementById('player');
+              if (pEl) pEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, { passive: true });
             streamsContainer.appendChild(btn);
           }
@@ -4566,41 +4542,15 @@
         btn.innerHTML = CH_LINK_ICON + '<span class="ch-btn-label">' + (ch.name || ch.id) + '</span>';
 
         btn.addEventListener('click', function () {
-          // Bring clicked channel to top of Star & Sony Sports grid
-          if (btn.parentNode && btn.parentNode.firstChild !== btn) {
-            btn.parentNode.prepend(btn);
-          }
-
           var exists = false;
           for (var i = 0; i < channels.length; i++) {
             if (channels[i].id === sid) { exists = true; channels[i] = chObj; break; }
           }
-          if (!exists) {
-            channels.unshift(chObj);
-          } else {
-            for (var k = 0; k < channels.length; k++) {
-              if (channels[k].id === sid) {
-                channels.splice(k, 1);
-                channels.unshift(chObj);
-                break;
-              }
-            }
-          }
-
-          // Bring channel to the top of the main Live Channels directory grid
-          var mainGrid = document.getElementById('chGrid');
-          if (mainGrid) {
-            var existingMain = mainGrid.querySelector('.ch-btn[data-id="' + sid + '"]');
-            if (existingMain) {
-              mainGrid.prepend(existingMain);
-            } else {
-              var mainBtn = createChBtn(chObj);
-              mainGrid.prepend(mainBtn);
-            }
-          }
+          if (!exists) channels.push(chObj);
 
           switchChannel(sid);
-          scrollToPlayerTop();
+          var pEl = document.getElementById('player');
+          if (pEl) pEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, { passive: true });
 
         return btn;
@@ -4912,6 +4862,8 @@
 
             renderWillowServerStrip(m, 0);
             switchChannel(servers[0].streamId);
+            var pEl = document.getElementById('player');
+            if (pEl) pEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
           });
         }
 
@@ -5185,6 +5137,8 @@
 
             renderWillowServerStrip(m, 0);
             switchChannel(servers[0].streamId);
+            var pEl = document.getElementById('player');
+            if (pEl) pEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
           });
         }
 
