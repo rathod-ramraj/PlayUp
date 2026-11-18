@@ -15,7 +15,7 @@
       "subtitle": "Sony Liv Hindi",
       "category": "Live Channel",
       "type": "iframe",
-      "streamUrl": "https://playupp.pages.dev/cricket/sonyLivHin",
+      "streamUrl": "https://playupp.pages.dev/cricket/sports.html?id=STEN3",
       "active": true
     },
     {
@@ -51,7 +51,7 @@
       "subtitle": "Star Sports HD English",
       "category": "Live Channel",
       "type": "iframe",
-      "streamUrl": "https://sonucdn-v5.pages.dev/star?id=E1HD",
+      "streamUrl": "https://playupp.pages.dev/cricket/sports.html?id=E1HD",
       "active": true
     },
     {
@@ -60,7 +60,7 @@
       "subtitle": "Star Sports HD Hindi",
       "category": "Live Channel",
       "type": "iframe",
-      "streamUrl": "https://sonucdn-v5.pages.dev/star?id=H1HD",
+      "streamUrl": "https://playupp.pages.dev/cricket/sports.html?id=H1HD",
       "active": true
     },
     {
@@ -96,7 +96,7 @@
       "subtitle": "Willow Live",
       "category": "Live Channel",
       "type": "iframe",
-      "streamUrl": "https://taifood-blog.asia/embed/247-willow",
+      "streamUrl": "https://allrounder-live12.pages.dev/hotstar",
       "active": true
     },
     {
