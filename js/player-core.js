@@ -322,8 +322,13 @@
       var iframe = document.createElement('iframe');
       iframe.className = 'live-iframe';
       iframe.src = src;
-      iframe.setAttribute('allow', 'autoplay; fullscreen; encrypted-media');
+      iframe.setAttribute('width', '600');
+      iframe.setAttribute('height', '400');
+      iframe.title = 'Iframe Example';
+      iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
       iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('referrerpolicy', 'no-referrer');
+      iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-presentation');
       iframe.addEventListener(
         'load',
         function () {

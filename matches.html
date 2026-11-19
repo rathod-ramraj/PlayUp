@@ -1921,12 +1921,16 @@
           if (!existingIframe) {
             existingIframe = document.createElement("iframe");
             existingIframe.className = "player-embed";
+            existingIframe.setAttribute("width", "600");
+            existingIframe.setAttribute("height", "400");
+            existingIframe.title = "Iframe Example";
             existingIframe.setAttribute("allowfullscreen", "true");
             existingIframe.setAttribute("webkitallowfullscreen", "true");
             existingIframe.setAttribute("mozallowfullscreen", "true");
             existingIframe.setAttribute("allow", "autoplay; encrypted-media; fullscreen; picture-in-picture");
             existingIframe.setAttribute("frameborder", "0");
             existingIframe.setAttribute("referrerpolicy", "no-referrer");
+            existingIframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms allow-presentation");
             container.appendChild(existingIframe);
           }
           existingIframe.style.display = "block";

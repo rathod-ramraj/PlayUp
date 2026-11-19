@@ -6,7 +6,7 @@
       "subtitle": "Sony Liv English",
       "category": "Live Channel",
       "type": "iframe",
-      "streamUrl": "https://playupp.pages.dev/cricket/sonyLivEng",
+      "streamUrl": "https://allrounder3-0.pages.dev/eng",
       "active": true
     },
     {
@@ -124,7 +124,7 @@
       "category": "Live Channel",
       "type": "iframe",
       "streamUrl": "https://freecdn.st/hembedplayer/csstream1/1/960/540",
-      "active": true
+      "active": false
     },
     {
       "id": "TNTsportsallrounder",

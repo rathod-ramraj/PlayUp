@@ -81,19 +81,20 @@
   function createIframe() {
     var iframe = document.createElement('iframe');
     iframe.className = 'live-iframe';
-    iframe.title = 'Live stream player';
+    iframe.setAttribute('width', '600');
+    iframe.setAttribute('height', '400');
+    iframe.title = 'Iframe Example';
     iframe.loading = 'eager';
-    iframe.setAttribute(
-      'allow',
-      'autoplay *; fullscreen *; encrypted-media *; picture-in-picture *; accelerometer *; gyroscope *; clipboard-write *'
-    );
+    iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
     iframe.setAttribute('allowfullscreen', 'true');
     iframe.setAttribute('webkitallowfullscreen', 'true');
     iframe.setAttribute('mozallowfullscreen', 'true');
     iframe.setAttribute('playsinline', 'true');
     iframe.setAttribute('webkit-playsinline', 'true');
     iframe.setAttribute('allowtransparency', 'true');
-    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.referrerPolicy = 'no-referrer';
+    iframe.setAttribute('referrerpolicy', 'no-referrer');
+    iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-presentation');
     iframe.setAttribute('importance', 'high');
     return iframe;
   }
