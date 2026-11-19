@@ -1800,7 +1800,6 @@
       justify-content: space-between;
       gap: 32px;
       padding: 56px 48px;
-      padding-right: max(48px, 190px);
       border-top: 1px solid var(--glass-border-2);
       background: rgba(255, 255, 255, 0.02);
       flex-wrap: wrap;
@@ -2166,14 +2165,13 @@
       footer {
         flex-direction: column;
         gap: 20px;
-        text-align: center;
         padding: 44px 20px calc(88px + env(safe-area-inset-bottom, 0px));
-        padding-right: 20px;
       }
 
       .footer-meta {
-        text-align: center;
-        margin-left: 0;
+        text-align: right;
+        margin-left: auto;
+        width: 100%;
         max-width: none;
       }
 
@@ -2942,6 +2940,68 @@
         margin-top: 12px !important;
       }
     }
+
+    /* ─── LIVE CHANNELS (24/7 TV Streams) ─── */
+    #channelsCol .s-label {
+      margin-bottom: 6px;
+    }
+
+    #channelsCol .s-title {
+      margin-bottom: 8px;
+    }
+
+    #channelsCol .s-desc {
+      margin-bottom: 12px;
+    }
+
+    #channelsCol .match-card {
+      margin-top: 0 !important;
+      background: transparent;
+    }
+
+    /* ─── PLAYER NOTE (Responsive Desktop / Mobile) ─── */
+    .player-note-desktop {
+      display: inline !important;
+    }
+    .player-note-mobile {
+      display: none !important;
+    }
+    @media (max-width: 768px) {
+      .player-note-desktop {
+        display: none !important;
+      }
+      .player-note-mobile {
+        display: inline !important;
+      }
+    }
+
+    /* ─── FOOTER GITHUB CONTRIBUTE BUTTON ─── */
+    .footer-github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      padding: 7px 14px;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-2);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--r-pill);
+      text-decoration: none;
+      transition: color .2s ease, background .2s ease, border-color .2s ease, transform .18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .2s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .footer-github-btn:hover {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      }
+    }
   </style>
 </head>
 
@@ -2977,6 +3037,10 @@
         <a href="/cricket/playup.html" class="nav-link">Change Version</a>
         <a href="#channels" class="nav-link">Channels</a>
         <a href="https://oneflixx.pages.dev/" class="nav-link" target="_blank" rel="noopener noreferrer">OneFlix</a>
+        <a href="https://github.com/rathod-ramraj/PlayUp" class="nav-link" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px" title="Contribute on GitHub">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>Contribute</span>
+        </a>
       </div>
       <a href="/cricket/playup.html" class="nav-link nav-channels-mobile">Change Version</a>
       <a href="#live-matches" class="nav-link nav-cta">Live Matches</a>
@@ -3086,14 +3150,13 @@
       ⚠ Invalid or unavailable stream ID. Please check the link.
     </div>
     <div class="player-note-banner"
-      style="margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--glass-border-2);border-radius:var(--r-md, 12px);font-size:13px;color:var(--text-2);text-align:center">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      style="margin-top:12px;padding:10px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--glass-border-2);border-radius:var(--r-md, 12px);font-size:13px;line-height:1.5;color:var(--text-2);text-align:center">
+      <span><span style="white-space:nowrap;display:inline-flex;align-items:center;gap:6px;vertical-align:text-bottom;margin-right:4px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round" style="color:var(--highlight);flex-shrink:0" aria-hidden="true">
         <circle cx="12" cy="12" r="10" />
         <line x1="12" y1="16" x2="12" y2="12" />
         <line x1="12" y1="8" x2="12.01" y2="8" />
-      </svg>
-      <span><strong>Note:</strong> If playback fails, refresh the page or switch channels, or explore the <a href="#live-matches" style="color:var(--text-1);font-weight:600;text-decoration:underline;text-underline-offset:2px">Live Matches section</a> below.</span>
+      </svg><strong>Note:</strong></span><span class="player-note-desktop">🤡 If one channel doesn't work, SWITCH IT! If you still can't figure it out, maybe explore the website before blaming the player. The <a href="#live-matches" style="color:var(--text-1);font-weight:600;text-decoration:underline;text-underline-offset:2px">Live Matches section</a> is literally right below. USE YOUR BRAIN! 😂</span><span class="player-note-mobile">🤡 Channel not working? SWITCH IT! Can't find matches? SCROLL DOWN! The <a href="#live-matches" style="color:var(--text-1);font-weight:600;text-decoration:underline;text-underline-offset:2px">Live Matches section</a> isn't hiding from you. 😂</span></span>
     </div>
   </div>
 
@@ -3106,7 +3169,7 @@
         <div class="s-label" style="color:#3b82f6">Live Channels</div>
         <div class="s-title">Switch instantly</div>
         <div class="s-desc">Tap any channel to start watching. If one stream fails, try another channel.</div>
-        <div class="match-card" style="margin-top:20px">
+        <div class="match-card">
           <div class="match-card-header">
             <div class="match-card-title">24/7 TV Streams</div>
             <div class="match-card-badge">ONLINE</div>
@@ -3521,6 +3584,15 @@
     <div>
       <div class="footer-brand">PlayUp</div>
       <div class="footer-copy">Free live TV and on-demand streaming. No signup required.</div>
+      <div>
+        <a href="https://github.com/rathod-ramraj/PlayUp" target="_blank" rel="noopener noreferrer" class="footer-github-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>Free &amp; Open Source on GitHub · Contribute</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.6"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+        </a>
+      </div>
     </div>
     <div class="footer-meta">
       <div><strong>Made with ❤️ by DIAMOND STAR</strong></div>
